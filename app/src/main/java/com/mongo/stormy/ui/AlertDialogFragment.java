@@ -1,4 +1,4 @@
-package com.mongo.stormy;
+package com.mongo.stormy.ui;
 
 
 import android.app.AlertDialog;
@@ -6,6 +6,8 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
+
+import com.mongo.stormy.R;
 
 public class AlertDialogFragment extends DialogFragment {
 
