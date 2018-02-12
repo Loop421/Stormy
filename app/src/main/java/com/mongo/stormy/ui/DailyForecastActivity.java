@@ -4,23 +4,19 @@ import android.app.ListActivity;
 import android.os.Bundle;
 
 import com.mongo.stormy.R;
+import com.mongo.stormy.adapters.DayAdapter;
+import com.mongo.stormy.weather.Day;
 
 public class DailyForecastActivity extends ListActivity {
+
+    private Day[] mDays;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_forecast);
+
+        DayAdapter adapter = new DayAdapter(this, mDays);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu,menu_daily_forecast, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int
-//    }
 }
