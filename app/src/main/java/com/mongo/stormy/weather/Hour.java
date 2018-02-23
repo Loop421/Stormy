@@ -1,12 +1,20 @@
 package com.mongo.stormy.weather;
 
 
-public class Hour {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Hour implements Parcelable{
     private long mTime;
     private String mSummary;
     private double mTemperature;
     private String mIcon;
     private String mTimeZone;
+
+    public Hour() { }
 
     public long getTime() {
         return mTime;
@@ -25,7 +33,7 @@ public class Hour {
     }
 
     public double getTemperature() {
-        return mTemperature;
+        return (int) Math.round(mTemperature);
     }
 
     public void setTemperature(double temperature) {
@@ -34,6 +42,10 @@ public class Hour {
 
     public String getIcon() {
         return mIcon;
+    }
+
+    public int getIconId() {
+        return Forecast.getIconId(mIcon);
     }
 
     public void setIcon(String icon) {
@@ -47,4 +59,44 @@ public class Hour {
     public void setTimeZone(String timeZone) {
         mTimeZone = timeZone;
     }
+
+    public String getHour() {
+        SimpleDateFormat formatter = new SimpleDateFormat("h a");
+        Date date = new Date(mTime * 1000);
+        return formatter.format(date);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeLong(mTime);
+        parcel.writeString(mSummary);
+        parcel.writeDouble(mTemperature);
+        parcel.writeString(mIcon);
+        parcel.writeString(mTimeZone);
+    }
+
+    private Hour(Parcel in) {
+        mTime = in.readLong();
+        mSummary = in.readString();
+        mTemperature = in.readDouble();
+        mIcon = in.readString();
+        mTimeZone = in.readString();
+    }
+
+    public static final Creator<Hour> CREATOR = new Creator<Hour>() {
+        @Override
+        public Hour createFromParcel(Parcel parcel) {
+            return new Hour(parcel);
+        }
+
+        @Override
+        public Hour[] newArray(int i) {
+            return new Hour[i];
+        }
+    };
 }

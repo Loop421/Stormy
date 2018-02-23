@@ -4,16 +4,19 @@ package com.mongo.stormy.weather;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.TimeZone;
 import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.RequiresApi;
 
 import java.util.Date;
 
-public class Day {
+public class Day implements Parcelable {
     private long mTime;
     private String mSummary;
     private double mTemperatureMax;
     private String mIcon;
     private String mTimeZone;
+    private int mCircle;
 
     public long getTime() {
         return mTime;
@@ -59,6 +62,10 @@ public class Day {
         return Forecast.getIconId(mIcon);
     }
 
+    public int getCircleImageView() {
+        return Forecast.getCircleImageView(mCircle);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public String getDayOfTheWeek() {
         SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
@@ -67,4 +74,42 @@ public class Day {
 
         return formatter.format(dateTime);
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeLong(mTime);
+        parcel.writeString(mSummary);
+        parcel.writeDouble(mTemperatureMax);
+        parcel.writeString(mIcon);
+        parcel.writeString(mTimeZone);
+    }
+
+    private Day(Parcel in) {
+        mTime = in.readLong();
+        mSummary = in.readString();
+        mTemperatureMax = in.readDouble();
+        mIcon = in.readString();
+        mTimeZone = in.readString();
+    }
+
+    public Day(){
+
+    }
+
+    public static final Creator<Day> CREATOR = new Creator<Day>() {
+        @Override
+        public Day createFromParcel(Parcel parcel) {
+            return new Day(parcel);
+        }
+
+        @Override
+        public Day[] newArray(int i) {
+            return new Day[i];
+        }
+    };
 }

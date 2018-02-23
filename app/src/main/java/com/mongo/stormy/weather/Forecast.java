@@ -32,6 +32,12 @@ public class Forecast {
         mDailyForecast = dailyForecast;
     }
 
+    public static int getCircleImageView(int circleString) {
+        circleString  = R.drawable.bg_temperature;
+
+        return circleString;
+    }
+
     public static int getIconId(String iconString) {
 
         // clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, partly-cloudy-night
