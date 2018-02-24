@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                tools:background="@drawable/bg_gradient">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    tools:background="@drawable/bg_gradient">
 
     <TextView
         android:id="@+id/timeLabel"
@@ -22,20 +21,20 @@
         tools:text="12 PM"/>
 
     <ImageView
-        android:id="@+id/iconImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="false"
-        android:layout_toEndOf="@+id/timeLabel"
+        android:id="@+id/iconImageView"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/timeLabel"
-        app:srcCompat="@drawable/partly_cloudy" />
+        android:layout_toEndOf="@+id/timeLabel"
+        android:src="@drawable/partly_cloudy"/>
 
     <TextView
         android:id="@+id/temperatureLabel"
         tools:text="100"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"

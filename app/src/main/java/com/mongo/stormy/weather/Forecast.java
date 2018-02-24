@@ -39,17 +39,16 @@ public class Forecast {
     }
 
     public static int getIconId(String iconString) {
-
-        // clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, partly-cloudy-night
+        // clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night.
         int iconId = R.drawable.clear_day;
 
-        if (iconString.equals("clear-day")){
+        if (iconString.equals("clear-day")) {
             iconId = R.drawable.clear_day;
         }
-        else if (iconString.equals("clear-night")){
+        else if (iconString.equals("clear-night")) {
             iconId = R.drawable.clear_night;
         }
-        else if (iconString.equals("rain")){
+        else if (iconString.equals("rain")) {
             iconId = R.drawable.rain;
         }
         else if (iconString.equals("snow")) {
@@ -73,8 +72,8 @@ public class Forecast {
         else if (iconString.equals("partly-cloudy-night")) {
             iconId = R.drawable.cloudy_night;
         }
+
         return iconId;
+
     }
-
-
 }

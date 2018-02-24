@@ -1,6 +1,5 @@
 package com.mongo.stormy.weather;
 
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -13,6 +12,7 @@ public class Hour implements Parcelable{
     private double mTemperature;
     private String mIcon;
     private String mTimeZone;
+    private int mCircle;
 
     public Hour() { }
 
@@ -32,7 +32,7 @@ public class Hour implements Parcelable{
         mSummary = summary;
     }
 
-    public double getTemperature() {
+    public int getTemperature() {
         return (int) Math.round(mTemperature);
     }
 
@@ -42,10 +42,6 @@ public class Hour implements Parcelable{
 
     public String getIcon() {
         return mIcon;
-    }
-
-    public int getIconId() {
-        return Forecast.getIconId(mIcon);
     }
 
     public void setIcon(String icon) {
@@ -58,6 +54,14 @@ public class Hour implements Parcelable{
 
     public void setTimeZone(String timeZone) {
         mTimeZone = timeZone;
+    }
+
+    public int getIconId(){
+        return Forecast.getIconId(mIcon);
+    }
+
+    public int getCircleImageView() {
+        return Forecast.getCircleImageView(mCircle);
     }
 
     public String getHour() {

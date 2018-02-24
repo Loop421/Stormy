@@ -209,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
             Hour hour = new Hour();
 
             hour.setSummary(jsonHour.getString("summary"));
+            hour.setIcon(jsonHour.getString("icon"));
             hour.setTemperature(jsonHour.getDouble("temperature"));
             hour.setTime(jsonHour.getLong("time"));
             hour.setTimeZone(timezone);
